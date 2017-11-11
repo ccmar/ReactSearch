@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Create React Express App
 
 ## About This Boilerplate
@@ -41,3 +42,7 @@ yarn build
 3. Push to Heroku
 
 If all previous steps were followed correctly, your application should be deployed to Heroku!
+=======
+# ReactSearch
+New York Times Search Application
+>>>>>>> c9a13503dc6cffa1a5d471d27f64363b5037f749
