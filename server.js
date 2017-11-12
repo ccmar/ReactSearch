@@ -40,3 +40,4 @@ app.delete("/api/saved", (req, res) => {
     res.send('DELETE request to homepage');
 }))
 });
+app.listen(process.env.PORT || 3001, () => console.log('Example app'))
