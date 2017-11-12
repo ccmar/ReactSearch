@@ -1,19 +1,42 @@
 const express = require("express");
-const path = require("path");
-const PORT = process.env.PORT || 3001;
-const app = express();
-
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-
-// Send every request to the React app
-// Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+mongoose.Promise = Promise;
+mongoose.connect("mongodb://localhost/nytreact", {
+  useMongoClient: true
 });
 
-app.listen(PORT, function() {
-  console.log(`🌎 ==> Server now on port ${PORT}!`);
+
+const Schema = mongoose.Schema
+  const ArticlesSchema = new Schema({
+    title: String,
+    date: { type: Date, default: Date.now},
+    url: String
+  });
+const Article = mongoose.model("Article", ArticlesSchema);
+
+
+const app = express();
+app.use(bodyParser.urlencoded({ extended: false}));
+// Use express.static to serve the public folder as a static directory
+app.use(express.static("client/build"));
+
+app.get("/api/saved", (req, res) => {
+  Article.find({}).then (function (err, articles){
+    if (err) console.log(err)
+    res.json(articles)
+  });
+});
+
+app.post("/api/saved", (req, res) => {
+  Article.create(req.body.then (function(err, article){
+    if (err) console.log(err);
+    res.json(article);
+  }))
+});
+app.delete("/api/saved", (req, res) => {
+  Article.create(req.body.then (function(err, article){
+    if (err) console.log(err);
+    res.send('DELETE request to homepage');
+}))
 });
