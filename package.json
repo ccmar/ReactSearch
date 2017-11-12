@@ -6,11 +6,15 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.1",
     "node": "^9.1.0",
     "nodemon": "^1.12.1",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-scripts": "^1.0.14"
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "react-router": "^4.2.0",
+    "react-scripts": "^1.0.14",
+    "reactjs": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
